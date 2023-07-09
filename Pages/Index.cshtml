@@ -1,10 +1,44 @@
-﻿@page
+﻿@page "/"
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Homepage";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@{
+    int pageNumber = (int)ViewData["PageNumber"];
+    int totalItems = (int)ViewData["TotalItems"];
+    int totalPages = (int)ViewData["TotalPages"];
+   
+}
+
+<div class="d-flex flex-wrap">
+    @foreach (var item in Model.items4page)
+    {
+        <div class="card text-bg-light m-3" style="width: 25rem;">
+            <div class="card-body">
+                <h4 class="card-title">@item.text</h4>
+                <a asp-page="/XMLpage" asp-route-message="@item.xmlLink" class="btn btn-primary" target="_blank">Link</a>
+            </div>
+        </div>
+    }
+
+
+</div>
+
+<div class="d-flex flex-column align-items-center">
+    <div class="m-3 ">
+        Page @pageNumber of @totalPages
+    </div>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            @for (int i = 1; i <= totalPages; i++)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="?pageNumber=@i" class="@(i == pageNumber ? "active" : "")">@i</a>
+                </li>
+
+            }
+        </ul>
+    </nav>
 </div>

@@ -11,7 +11,7 @@ public class IndexModel : PageModel
     private readonly IHttpClientFactory _httpClientFactory;
     public IndexModel(IHttpClientFactory httpClientFactory) =>
         _httpClientFactory = httpClientFactory;
-    public async Task OnGetAsync(int pageNumber = 1, int pageSize = 10)
+    public async Task OnGetAsync(int pageNumber = 1, int pageSize = 12)
     {
         var client = _httpClientFactory.CreateClient();
         var response = await client.GetAsync("https://blue.feedland.org/opml?screenname=dave");

@@ -33,13 +33,13 @@ public class IndexModel : PageModel
 
         foreach (XmlNode node in nodes)
         {
-            string text = node.Attributes["text"].Value ?? "";
+            string Text = node.Attributes["text"].Value ?? "";
             string link = node.Attributes["xmlUrl"].Value ?? "";
 
             feedItem newItem = new feedItem()
             {
-                text = text,
-                xmlLink = link
+                Text = Text,
+                XmlLink = link
             };
 
             itemsList.Add(newItem);
@@ -62,7 +62,7 @@ public class IndexModel : PageModel
 
 public class feedItem
 {
-    public string? text { get; set; }
-    public string? xmlLink { get; set; }
+    public string? Text { get; set; }
+    public string? XmlLink { get; set; }
 }
 

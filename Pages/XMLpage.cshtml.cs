@@ -36,26 +36,26 @@ public class XMLpageModel : PageModel
 
         foreach (XmlNode node in nodes)
         {
-            XmlNode? titleTag = node.SelectSingleNode("title");
-            string title = (titleTag != null) ? titleTag.InnerText : "";
+            XmlNode? TitleTag = node.SelectSingleNode("title");
+            string Title = (TitleTag != null) ? TitleTag.InnerText : "";
 
-            XmlNode? descriptionTag = node.SelectSingleNode("description");
-            string htmlCode = (descriptionTag != null) ? descriptionTag.InnerText : "";
-            HtmlString description = new HtmlString(htmlCode);
+            XmlNode? DescriptionTag = node.SelectSingleNode("description");
+            string htmlCode = (DescriptionTag != null) ? DescriptionTag.InnerText : "";
+            HtmlString Description = new HtmlString(htmlCode);
 
-            XmlNode? pubDateTag = node.SelectSingleNode("pubDate");
-            string pubDate = (pubDateTag != null) ? pubDateTag.InnerText : "";
-            var date = DateTime.Parse(pubDate);
+            XmlNode? PubDateTag = node.SelectSingleNode("pubDate");
+            string PubDate = (PubDateTag != null) ? PubDateTag.InnerText : "";
+            var date = DateTime.Parse(PubDate);
 
-            XmlNode? linkTag = node.SelectSingleNode("link");
-            string link = (linkTag != null) ? linkTag.InnerText : "";
+            XmlNode? LinkTag = node.SelectSingleNode("link");
+            string Link = (LinkTag != null) ? LinkTag.InnerText : "";
 
             Item newItem = new Item()
             {
-                title = title,
-                description = description,
-                pubdate = date,
-                link = link
+                Title = Title,
+                Description = Description,
+                PubDate = date,
+                Link = Link
             };
 
             itemsList.Add(newItem);
@@ -68,8 +68,8 @@ public class XMLpageModel : PageModel
 }
 public class Item
 {
-    public string? title { get; set; }
-    public HtmlString? description { get; set; }
-    public DateTime pubdate { get; set; }
-    public string? link { get; set; }
+    public string? Title { get; set; }
+    public HtmlString? Description { get; set; }
+    public DateTime PubDate { get; set; }
+    public string? Link { get; set; }
 }

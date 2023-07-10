@@ -60,7 +60,7 @@ public class IndexModel : PageModel
     }
 }
 
-public class feedItem
+public class FeedItem
 {
     public string? Text { get; set; }
     public string? XmlLink { get; set; }

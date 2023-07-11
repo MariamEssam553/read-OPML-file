@@ -5,8 +5,8 @@ namespace HW4.Pages;
 
 public class IndexModel : PageModel
 {
-    public List<feedItem> items4page { get; set; } = new();
-    public List<feedItem> outlines { get; set; } = new();
+    public List<FeedItem> items4page { get; set; } = new();
+    public List<FeedItem> outlines { get; set; } = new();
 
     private readonly IHttpClientFactory _httpClientFactory;
     public IndexModel(IHttpClientFactory httpClientFactory) =>
@@ -22,7 +22,7 @@ public class IndexModel : PageModel
         opmlDocument.LoadXml(OPMLcontent);
         XmlElement? root = opmlDocument.DocumentElement;
         XmlNodeList nodes = root.GetElementsByTagName("outline");
-        List<feedItem> itemsList = new List<feedItem>();
+        List<FeedItem> itemsList = new List<FeedItem>();
 
         int totalItems = nodes?.Count ?? 0;
         int totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
@@ -36,7 +36,7 @@ public class IndexModel : PageModel
             string Text = node.Attributes["text"].Value ?? "";
             string link = node.Attributes["xmlUrl"].Value ?? "";
 
-            feedItem newItem = new feedItem()
+            FeedItem newItem = new FeedItem()
             {
                 Text = Text,
                 XmlLink = link
